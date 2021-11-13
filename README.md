@@ -12,6 +12,13 @@ Runs on an image stack. Pre-processes stack and then iteratively runs FIJIs "Fin
 point pick with. Repeats process for each position in each channel. Saves point pick counts in a **results** folder for each channel, as
 well as ROI files for each position in an **rois** folder.
 
+Issues:
+1. Saving ROI and results by running "Find Maxima" twice is duplicating and concatenating stack with itself
+2. The name of this script should be different but it currently does too many tasks. Certain functionality needs to be pulled out and made into it's own script.
+    + Finding ideal prominence and running "Find Maxima" should be it's own script, and this would be more like the name suggests
+4. First position ROI is being saved as second position (might be zero indexing issue?)
+
+
 Future Aims:
 1. Selecting ideal prominence value:
     + Dynamically determine max prominence search range as this seems to greatly influence efficiency of this process.
@@ -24,6 +31,4 @@ Future Aims:
     + Write a script to validate ROIs unsupervised and generate (True/False) (Positive/Negative) table and efficiency.
     + Write a GUI to allow user to validate/add points live.
     
-Issues:
-1. Saving ROI and results by running "Find Maxima" twice is duplicating and concatenating stack with itself
-2. First position ROI is being saved as second position (might be zero indexing issue?)
+
