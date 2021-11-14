@@ -1,4 +1,6 @@
 function generate_prom_counts(increment,max_p){
+	// This function uses the results table to store counts information
+	//	before copying into an array. Not sure if there is a work around to this
 	run("Clear Results");
 
 	// TODO: this might need to be adjusted dynamically based on image
@@ -127,7 +129,7 @@ function get_counts(ch, frame,increment,max_p, save_results){
 	return count;	
 }
 
-personal_script_dir = "/Users/adrian/code/lab/fiji/";
+personal_script_dir = "/Users/adrian/code/lab/fiji_scripts/";
 current_dir = runMacro(personal_script_dir + "concat_lane_dir.ijm");
 
 
@@ -204,8 +206,8 @@ for (i=1; i<=lengthOf(cell_channels); i++){
 run("Gaussian Blur...", "sigma=1 stack");
 
 //cell_channels = newArray("jurkat", "lag16psgl_tether", "lag16icam");
-// TODO: need to get this dynamically from each of the stacks should be easy
-positions = 4;
+Stack.getDimensions(width, height, channels, slices, frames);
+positions = frames;
 for (ch=1; ch <=lengthOf(cell_channels); ch++){
 	channel_counts = newArray(positions+1); // Will hold the counts
 	channel_counts[0] = cell_channels[ch-1]; // Add the name of the channel
