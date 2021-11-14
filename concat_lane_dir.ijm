@@ -28,12 +28,18 @@ function count_images_in_dir(files){
 }
 
 function get_images_in_dir(files){
-	image_list = newArray(count_images_in_dir(files));
+	num_images = count_images_in_dir(files)
+	image_list = newArray(num_images);
 	//print("Images: " + lengthOf(image_list));
-	for (i=0; i<lengthOf(files); i++){
-		if (endsWith(files[i], ".tif")){
-			//print("Adding: " + files[i]);
-			image_list[i] = files[i];
+	//print("Files: " + lengthOf(files));
+	image_count = 0;
+	while(image_count < num_images){
+		for (i=0; i<lengthOf(files); i++){
+			if (endsWith(files[i], ".tif")){
+				print("Adding: " + files[i]);
+				image_list[image_count] = files[i];
+				image_count++;
+			}
 		}
 	}
 	return image_list;
@@ -74,6 +80,8 @@ function concat_positions(){
 		// might change the file exists logic...
 		
 		setVoxelSize(1, 1, 1, "pixel");
+		
+		print("Channels: " + channels + " Slices: " + slices + " Frames: " + frames);
 		saveAs(stack_path);
 	}else{
 		print(stack_path + " already exists! Opening...");
