@@ -81,7 +81,7 @@ function concat_positions(){
 		
 		setVoxelSize(1, 1, 1, "pixel");
 		
-		print("Channels: " + channels + " Slices: " + slices + " Frames: " + frames);
+		//print("Channels: " + channels + " Slices: " + slices + " Frames: " + frames);
 		saveAs(stack_path);
 	}else{
 		print(stack_path + " already exists! Opening...");
